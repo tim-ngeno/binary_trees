@@ -47,7 +47,6 @@ void enqueue(node_t **front, node_t **rear, binary_tree_t *data)
 }
 
 
-
 /**
  * dequeue - dequeues a node from the queue
  * @front: points to the element at front of the queue
@@ -108,5 +107,8 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		enqueue(&front, &rear, current->right);
 	}
 
+	free(current);
+	free(front);
+	free(rear);
 	return (0);
 }
