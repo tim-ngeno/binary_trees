@@ -59,6 +59,7 @@ void enqueue(node_t **front, node_t **rear, binary_tree_t *data)
 binary_tree_t *dequeue(node_t **front, node_t **rear)
 {
 	node_t *temp = *front;
+	binary_tree_t *data;
 
 	if (*front == NULL)
 		return (NULL);
@@ -67,8 +68,7 @@ binary_tree_t *dequeue(node_t **front, node_t **rear)
 	if (*front == NULL)
 		*rear = NULL;
 
-	binary_tree_t *data = temp->data;
-
+	data = temp->data;
 	free(temp);
 	return (data);
 }
@@ -86,6 +86,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
 	node_t *front = NULL;
 	node_t *rear = NULL;
+	binary_tree_t *current;
 
 	if (tree == NULL || func == NULL)
 		return;
@@ -94,8 +95,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 
 	while (front != NULL)
 	{
-		binary_tree_t *current = dequeue(&front, &rear);
-
+		current = dequeue(&front, &rear);
 		func(current->n);
 
 		if (current->left != NULL)
