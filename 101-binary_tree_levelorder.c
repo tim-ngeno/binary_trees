@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * creat_node - creates a new node
+ * create_node - creates a new node
  * @data: value to be stored in the node
  *
  * Return: pointer to the new node
@@ -68,6 +68,7 @@ binary_tree_t *dequeue(node_t **front, node_t **rear)
 		*rear = NULL;
 
 	binary_tree_t *data = temp->data;
+
 	free(temp);
 	return (data);
 }
@@ -94,6 +95,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	while (front != NULL)
 	{
 		binary_tree_t *current = dequeue(&front, &rear);
+
 		func(current->n);
 
 		if (current->left != NULL)
